@@ -8,6 +8,13 @@ def create_user(fname, lname, password):
     new_user = User(fname, lname,password)
     return new_user
 
+def save_user(user):
+    """
+    Function to save user
+    """
+
+    user.save_user()
+
 
 
 def main():
@@ -27,6 +34,33 @@ def main():
 
             print("Enter your user name: ")
             user_Name = input()
+
+            print("Enter your password: ")
+            user_password = input()
+
+            print("We are trying")
+
+            break
+
+
+
+        elif short_code == "b":
+
+            print("Create an Account")
+
+            new_user_first_name = input("Enter your first name: ")
+            new_user_last_name = input("Enter your last name: ")
+            new_user_password = input("Enter your password")
+
+            save_user(create_user(new_user_first_name, new_user_last_name, new_user_password))
+            print("\n")
+            print(f"New User {new_user_first_name} {new_user_last_name} created!")
+
+
+            print("Bye")
+            break
+
+
 
 
 
