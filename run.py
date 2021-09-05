@@ -76,11 +76,11 @@ def main():
 
             if create_password == "a":
                 create_password = input("Enter your password: ")
-                confirmed_password = input("Confirm password")
+                confirmed_password = input("Confirm password: ")
                 if confirmed_password == create_password:
                     print("Account Created Succesfully.")
                 else:
-                    print("Password Doesnt match. Try again")
+                    print("Password Doesn't match. Try again")
                     break
             elif create_password == "b":
                 chars = ["abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"]
@@ -95,7 +95,6 @@ def main():
                             password_generated = password_generated + password_char
                             print(password_generated)
 
-                # create_password
 
             new_user_password = input("Enter your password: ")
 
