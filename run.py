@@ -33,7 +33,7 @@ def display_credentials():
     """
     A function that will return the credential list
     """
-    return User.display_credentials()
+    return Credentials.display_credentials()
 
 
 
@@ -121,6 +121,21 @@ def main():
                 # save_credentials()
 
                 print(f"Password Vault for {platform} with the username {platform_username} created successfully")
+
+                print("A. To view Your credentials | B. Exit")
+                choice = input().lower()
+
+                if choice == "a":
+                    if display_credentials():
+                        print("Here is a list of all your credentials")
+                        print("\n")
+
+                        for credential in display_credentials():
+                            print({credential})
+                elif choice == "b":
+                    print("Quit")
+                    break
+
 
 
             else:

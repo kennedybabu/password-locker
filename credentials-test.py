@@ -48,6 +48,13 @@ class TestUser(unittest.TestCase):
         test_credential.save_credentials()
         self.assertEqual(len(Credentials.credential_requirements), 2)
 
+    def test_display_all_credentials(self):
+        """
+        Test whether all credentials are displayed back to the user
+        """
+
+        self.assertEqual(Credentials.display_credentials(), Credentials.credential_requirements)
+
 
 
 
