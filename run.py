@@ -39,10 +39,10 @@ def display_credentials():
 
 def main():
     print("\n")
-    print("Jambo(Hello, in Swahili)!Welcome to Shhh-Locker!.")
+    print("\u001b[33mJambo(Hello, in Swahili)!Welcome to Shhh-Locker!.\u001b[0m")
     print("\n")
 
-    user_name = input("Enter your user name: ")
+    user_name = input("\u001b[36mEnter your user name: \u001b[0m")
 
     print(f"What would you like to do? A. Login | B. Create an account")
 
@@ -76,9 +76,9 @@ def main():
 
             if create_password == "a":
                 create_password = input("Enter your password: ")
-                confirmed_password = input("Confirm password: ")
+                confirmed_password = input("\u001b[33mConfirm password: \u001b[0m")
                 if confirmed_password == create_password:
-                    print("\033[1;32;40mAccount Created Succesfully.\033[0m")
+                    print("\u001b[32mAccount Created Succesfully.\u001b[0m")
                     save_user(create_user(new_user_first_name, new_user_last_name,create_password))
 
                 else:
@@ -114,10 +114,10 @@ def main():
 
                 login_name = input("Enter your name: ")
                 login_password = input("Enter password: ")
-                new_user_password = input("Confirm password: ")
+                new_user_password = input("\u001b[33mConfirm password: \u001b[0m")
 
                 if login_name == new_user_first_name and login_password == new_user_password:
-                    print("Login successful!")
+                    print("\u001b[32mLogin successful!\u001b[0m")
                     print("\n")
 
                     print("Create a Password Vault")
@@ -144,7 +144,7 @@ def main():
                     elif choice == "b":
                         
                         print(f"You have logged out {login_name} .Remember: We remember your passwords so that you dont have to.")
-                        break
+                    break
 
                 else:
                     print("\N{ESC}[31m Login Failed. Enter valid credentials\u001b[0m")
