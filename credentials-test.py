@@ -32,6 +32,22 @@ class TestUser(unittest.TestCase):
         self.new_credentials.save_credentials()
         self.assertEqual(len(Credentials.credential_requirements), 1)
 
+    def tearDown(self):
+        """
+        tearDown method that does clean up after each test case has run
+        """
+        Credentials.credential_requirements = []
+
+    def test_save_multiple_credentials(self):
+        """
+        test to check whether we can save multiple credentials to out list
+        """
+
+        self.new_credentials.save_credentials()
+        test_credential = Credentials("instagram" , "Brady", "098765")
+        test_credential.save_credentials()
+        self.assertEqual(len(Credentials.credential_requirements), 2)
+
 
 
 
