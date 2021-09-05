@@ -78,7 +78,7 @@ def main():
                 create_password = input("Enter your password: ")
                 confirmed_password = input("Confirm password: ")
                 if confirmed_password == create_password:
-                    print("Account Created Succesfully.")
+                    print("\033[1;32;40mAccount Created Succesfully.\033[0m")
                     save_user(create_user(new_user_first_name, new_user_last_name,create_password))
 
                 else:

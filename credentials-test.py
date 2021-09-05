@@ -55,6 +55,16 @@ class TestUser(unittest.TestCase):
 
         self.assertEqual(Credentials.display_credentials(), Credentials.credential_requirements)
 
+    def delete_user_credentials(self):
+        """
+        delete a user credential object from the list
+        """
+        self.new_credentials.save_credentials()
+        test_credential = Credentials("pinterest", "Tom", "1234567")
+
+        self.new_credentials.delete_credentials()
+        self.assertEqual(len(Credentials.credential_requirements), 1)
+
 
 
 
