@@ -79,74 +79,81 @@ def main():
                 confirmed_password = input("Confirm password: ")
                 if confirmed_password == create_password:
                     print("Account Created Succesfully.")
+                    save_user(create_user(new_user_first_name, new_user_last_name,create_password))
+
                 else:
-                    print("Password Doesn't match. Try again")
+                    print("\N{ESC}[31m  Password Doesn't match. Try again\u001b[0m")
                     break
             elif create_password == "b":
                 chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 
-                while 1:
-                    password_length = int(input("What length would you like your password to be,i.e 5,8..."))
+                # while 1:
+                #     password_length = int(input("What length would you like your password to be,i.e 5,8..."))
                      
-                    for i in range(0,1):
-                        password_generated = ""
-                        for i in range(0, password_length):
-                            password_char = random.choice(chars)
-                            password_generated = password_generated + password_char
-                            create_password = password_generated
-                        print(create_password)
+                #     for i in range(0,1):
+                #         password_generated = ""
+                #         for i in range(0, password_length):
+                #             password_char = random.choice(chars)
+                #             password_generated = password_generated + password_char
+                #             create_password = password_generated
+                #             new_user_password = create_password
+                #         return new_user_password
 
 
-            new_user_password = input("Enter your password: ")
+                new_user_password = input("Enter your password: ")
 
-            save_user(create_user(new_user_first_name, new_user_last_name, new_user_password))
-            print("\n")
-            print(f"New User {new_user_first_name} {new_user_last_name} created!")
+                save_user(create_user(new_user_first_name, new_user_last_name, new_user_password))
+                print("\n")
+                print(f"New User {new_user_first_name} {new_user_last_name} created!")
+                print(f"Your password is: {new_user_password}")
+                return new_user_password
+
+            while True:
+                print("\n")
+                print("Proceed to login")
+
+                login_name = input("Enter your name: ")
+                login_password = input("Enter password: ")
+                new_user_password = input("Confirm password: ")
+
+                if login_name == new_user_first_name and login_password == new_user_password:
+                    print("Login successful!")
+                    print("\n")
+
+                    print("Create a Password Vault")
+                    platform = input("Enter platform name...")
+                    platform_username  = input("Enter your user name: ")
+                    platform_pswrd = input("Enter password: ")
+
+                    save_user_credentials(create_user_credentials(platform,platform_username,  platform_pswrd))
+
+                    # save_credentials()
+
+                    print(f"Password Vault for {platform} with the username {platform_username} created successfully")
+
+                    print("A. To view Your saved Passwords | B. Exit")
+                    choice = input().lower()
+
+                    if choice == "a":
+                        if display_credentials():
+                            print("Here is a list of all your credentials")
+                            print("\n")
+
+                            for credential in display_credentials():
+                                print(f"{credential.platform}")
+                    elif choice == "b":
+                        
+                        print(f"You have logged out {login_name} .Remember: We remember your passwords so that you dont have to.")
+                        break
+
+                else:
+                    print("\N{ESC}[31m Login Failed. Enter valid credentials\u001b[0m")
+                    break      
 
 
-            print("Proceed to login")
 
-            login_name = input("Enter your name: ")
-            login_password = input("Enter password: ")
-
-            if login_name == new_user_first_name and login_password == new_user_password:
-                print("Login successful!")
-
-                print("Create a Password Vault")
-                platform = input("Enter platform name...")
-                platform_username  = input("Enter your user name")
-                platform_pswrd = input("Enter password..")
-
-                save_user_credentials(create_user_credentials(platform,platform_username,  platform_pswrd))
-
-                # save_credentials()
-
-                print(f"Password Vault for {platform} with the username {platform_username} created successfully")
-
-                print("A. To view Your credentials | B. Exit")
-                choice = input().lower()
-
-                if choice == "a":
-                    if display_credentials():
-                        print("Here is a list of all your credentials")
-                        print("\n")
-
-                        for credential in display_credentials():
-                            print(f"{credential}")
-                elif choice == "b":
-                    print("Quit")
-                    break
-
-
-
-            else:
-                print("Login Failed. Enter valid credentials")
-                break        
-
-
-
-            print("Bye")
-            break
+                print("Bye")
+                break
 
 
 if __name__ == "__main__":

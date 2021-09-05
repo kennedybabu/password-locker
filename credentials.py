@@ -30,5 +30,4 @@ class Credentials:
         """
         display_credentials returns the credentials list
         """
-
         return cls.credential_requirements
