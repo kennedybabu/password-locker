@@ -1,4 +1,5 @@
 from user import User
+from credentials import Credentials
 
 def create_user(fname, lname, password):
     """
@@ -14,6 +15,14 @@ def save_user(user):
     """
 
     user.save_user()
+
+def display_credentials():
+    """
+    A function that will return the credential list
+    """
+    return User.display_credentials()
+
+
 
 
 
@@ -50,11 +59,22 @@ def main():
 
             new_user_first_name = input("Enter your first name: ")
             new_user_last_name = input("Enter your last name: ")
-            new_user_password = input("Enter your password")
+            print("Would you like to create your password or generate one, A. Create | B. Generate")
+            create_password = input().lower()
+
+            new_user_password = input("Enter your password: ")
 
             save_user(create_user(new_user_first_name, new_user_last_name, new_user_password))
             print("\n")
             print(f"New User {new_user_first_name} {new_user_last_name} created!")
+
+            print("Create password: ")
+
+            platfrm_usrname  = input("Enter your user name")
+            platform = input("Enter platform name...")
+            platform_pswrd = input("Enter password..")
+
+            print(f"Account for {platform} with the username {platfrm_usrname} created")
 
 
             print("Bye")

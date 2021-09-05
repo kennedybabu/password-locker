@@ -1,6 +1,7 @@
 import unittest
 from user import User
 
+
 class TestUser(unittest.TestCase):
     """
     Test that defines test cases for the user class behaviour
@@ -32,3 +33,6 @@ class TestUser(unittest.TestCase):
 
         self.new_user.save_user()
         self.assertEqual(len(User.user_list), 1)
+
+if __name__ == "__main__":
+    unittest.main()
