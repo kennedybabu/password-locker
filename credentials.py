@@ -30,4 +30,18 @@ class Credentials:
         """
         display_credentials returns the credentials list
         """
-        return cls.credential_requirements
+        return Credentials.credential_requirements
+
+    @classmethod
+    def find_credentials(cls, platform):
+        """
+        Function that will take in a platform name and returns the credentials that match
+
+        Args:
+            platform_name: name of the credential to search for
+        Returns:
+            Credentials that match the platform_name
+        """
+        for credential in cls.credential_requirements:
+            if credential.platform_name == platform:
+                return credential
