@@ -1,5 +1,6 @@
 from user import User
 from credentials import Credentials
+import random
 
 def create_user(fname, lname, password):
     """
@@ -62,11 +63,40 @@ def main():
             print("Would you like to create your password or generate one, A. Create | B. Generate")
             create_password = input().lower()
 
+            if create_password == "a":
+                create_password = input("Enter your password: ")
+            elif create_password == "b":
+                chars = ["abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"]
+
+                while 1:
+                    password_length = int(input("What length would you like your password to be,i.e 5,8..."))
+                     
+                    for i in range(0,2):
+                        password_generated = ""
+                        for i in range(0, password_length):
+                            password_char = random.choice(chars)
+                            password_generated = password_generated + password_char
+                            print(password_generated)
+
+                # create_password
+
             new_user_password = input("Enter your password: ")
 
             save_user(create_user(new_user_first_name, new_user_last_name, new_user_password))
             print("\n")
             print(f"New User {new_user_first_name} {new_user_last_name} created!")
+
+
+            print("Proceed to login")
+
+            login_name = input("Enter your name: ")
+            login_password = input("Enter password: ")
+
+            if login_name == new_user_first_name and login_password == new_user_password:
+                print("Login successful!")
+            else:
+                print("Login Failed. Enter valid credentials")
+                break
 
             print("Create password: ")
 
