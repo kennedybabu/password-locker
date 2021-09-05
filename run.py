@@ -83,17 +83,18 @@ def main():
                     print("Password Doesn't match. Try again")
                     break
             elif create_password == "b":
-                chars = ["abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"]
+                chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 
                 while 1:
                     password_length = int(input("What length would you like your password to be,i.e 5,8..."))
                      
-                    for i in range(0,2):
+                    for i in range(0,1):
                         password_generated = ""
                         for i in range(0, password_length):
                             password_char = random.choice(chars)
                             password_generated = password_generated + password_char
-                            print(password_generated)
+                            create_password = password_generated
+                        print(create_password)
 
 
             new_user_password = input("Enter your password: ")
@@ -131,7 +132,7 @@ def main():
                         print("\n")
 
                         for credential in display_credentials():
-                            print({credential})
+                            print(f"{credential}")
                 elif choice == "b":
                     print("Quit")
                     break
@@ -146,14 +147,6 @@ def main():
 
             print("Bye")
             break
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
