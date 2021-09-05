@@ -46,10 +46,14 @@ def delete_credentials(credential):
     """
     Function that will delete a user credential
     """
-    Credentials.delete_credentials()
+    Credentials.delete_credentials() 
 
+def find_credentials(credential):
+    """
+    Function that will look for a specific account in the stored credentials
+    """
 
-        
+    return Credentials.find_credentials(credential)
 
 
 
@@ -62,9 +66,7 @@ def password_gen(length):
     # define the condition for random.sample() method  
     result1 = ''.join((random.sample(letters, length)))  
     platform_password = result1
-    return platform_password  
-
-  
+    return platform_password    
 
 
 
@@ -195,8 +197,9 @@ def main():
 
                     elif choice == "c":
                         print("Which account would you like to delete? ")
-                        delete_acc = input("Enter account name, i.e insatgram")
-                        # delete_credentials()
+                        delete_acc = input("Enter account name, i.e insatgram: ")
+                        delete_credentials(find_credentials(delete_acc))
+                        print(f"{delete_acc} has been deleted succesfully!")
 
                 else:
                     print("\N{ESC}[31mLogin Failed. Enter valid credentials\u001b[0m")
