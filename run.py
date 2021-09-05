@@ -17,6 +17,18 @@ def save_user(user):
 
     user.save_user()
 
+def create_user_credentials(platform_name, platform_username, platform_password):
+    """
+    Function that will create a new credential
+    """
+    new_user_credentials = Credentials(platform_name, platform_username, platform_password)
+
+def save_user_credentials(credential):
+    """
+    Function to save user credentials
+    """
+    Credentials.save_credentials(credential)
+
 def display_credentials():
     """
     A function that will return the credential list
@@ -25,9 +37,8 @@ def display_credentials():
 
 
 
-
-
 def main():
+    print("\n")
     print("Jambo(Hello, in Swahili)!Welcome to Shhh-Locker!.")
     print("\n")
 
@@ -65,6 +76,12 @@ def main():
 
             if create_password == "a":
                 create_password = input("Enter your password: ")
+                confirmed_password = input("Confirm password")
+                if confirmed_password == create_password:
+                    print("Account Created Succesfully.")
+                else:
+                    print("Password Doesnt match. Try again")
+                    break
             elif create_password == "b":
                 chars = ["abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"]
 
@@ -94,17 +111,23 @@ def main():
 
             if login_name == new_user_first_name and login_password == new_user_password:
                 print("Login successful!")
+
+                print("Create a Password Vault")
+                platform = input("Enter platform name...")
+                platform_username  = input("Enter your user name")
+                platform_pswrd = input("Enter password..")
+
+                save_user_credentials(create_user_credentials(platform,platform_username,  platform_pswrd))
+
+                # save_credentials()
+
+                print(f"Password Vault for {platform} with the username {platform_username} created successfully")
+
+
             else:
                 print("Login Failed. Enter valid credentials")
-                break
+                break        
 
-            print("Create password: ")
-
-            platfrm_usrname  = input("Enter your user name")
-            platform = input("Enter platform name...")
-            platform_pswrd = input("Enter password..")
-
-            print(f"Account for {platform} with the username {platfrm_usrname} created")
 
 
             print("Bye")

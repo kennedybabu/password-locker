@@ -16,6 +16,13 @@ class Credentials:
         """
         Method that saves a credential object in the credential_requirements array
         """
+        Credentials.credential_requirements.append(self)
+
+    def delete_credentials(self):
+        """
+        Function that will delete a users crededntials
+        """
+        Credentials.credential_requirements.remove(self)
 
 
     @classmethod
