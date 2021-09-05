@@ -83,19 +83,24 @@ def main():
 
     while True:
         if short_code == "a":
-            print("Already a User")
+            print("Enter your credentials")
             print("_"*3)
+            
+            user_Name = input("Enter your user name: ")
+           
+            user_password = input("Enter your password: ")
 
-            print("Enter your user name: ")
-            user_Name = input()
+            # if display_credentials():
+            #     for credential in display_credentials():
+            #         if user_Name == credential.platform_username:
+            #             # return credential
+            #             print("Login successful")
+            #         else:
+            #             print("No account found. Create one or Login using right credentials")
 
-            print("Enter your password: ")
-            user_password = input()
-
-            print("We are trying")
+            print("No account found with the credentials.Create a new account or login using the right credentials")
 
             break
-
 
 
         elif short_code == "b":
@@ -126,14 +131,14 @@ def main():
                 auto_gen_password =  ( ''.join(random.choice(letters) for i in range(password_length)) )
 
 
-                print("Your generated password is: ", auto_gen_password)
+                print("\u001b[35;1mYour generated password is: \u001b[0m", auto_gen_password)
                 new_user_password = auto_gen_password
 
                 while True:
 
                     save_user(create_user(new_user_first_name, new_user_last_name, new_user_password))
                     print("\n")                  
-                    print(f"Successfully created {new_user_first_name} account")
+                    print(f"Successfully, created {new_user_first_name} account")
                     user_decision = input("\u001b[34mA. To view Your saved Passwords | B. Exit\u001b[0m: ").lower()
 
                     if user_decision == "a":
@@ -203,9 +208,7 @@ def main():
 
                 else:
                     print("\N{ESC}[31mLogin Failed. Enter valid credentials\u001b[0m")
-                    break      
-
-
+                    break  
 
             print("Bye")
             break

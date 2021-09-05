@@ -30,7 +30,7 @@ class Credentials:
         """
         display_credentials returns the credentials list
         """
-        return Credentials.credential_requirements
+        return cls.credential_requirements
 
     @classmethod
     def find_credentials(cls, platform):
