@@ -65,6 +65,16 @@ class TestUser(unittest.TestCase):
         self.new_credentials.delete_credentials()
         self.assertEqual(len(Credentials.credential_requirements), 1)
 
+    def test_find_credential_by_name(self):
+        """
+        find credential by name
+        """
+        self.new_credentials.save_credentials()
+        test_credential = Credentials("pinterest", "Tom", "1234567")
+        test_credential.save_credentials()
+
+        found_credential = Credentials.find_credentials("pinterest")
+        self.assertEqual(found_credential.platfform_name, test_credential.platfform_name)
 
 
 

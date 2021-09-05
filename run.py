@@ -46,8 +46,12 @@ def delete_credentials(credential):
     """
     Function that will delete a user credential
     """
-
     Credentials.delete_credentials()
+
+
+        
+
+
 
 @classmethod
 def password_gen(length):
@@ -192,6 +196,7 @@ def main():
                     elif choice == "c":
                         print("Which account would you like to delete? ")
                         delete_acc = input("Enter account name, i.e insatgram")
+                        # delete_credentials()
 
                 else:
                     print("\N{ESC}[31mLogin Failed. Enter valid credentials\u001b[0m")

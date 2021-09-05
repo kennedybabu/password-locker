@@ -43,5 +43,5 @@ class Credentials:
             Credentials that match the platform_name
         """
         for credential in cls.credential_requirements:
-            if credential.platform_name == platform:
+            if credential.platfform_name == platform:
                 return credential
