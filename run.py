@@ -94,7 +94,7 @@ def main():
             platform_search = input("Enter the platform you want to search for: ")
             if check_existing_credentials(platform_search):
                 search_credential = find_credentials(platform_search)
-                print(search_credential.platform_name)
+                # print(search_credential.platform_name)
 
             else:
                 print("\u001b[31;1mThe credential was not found, Try Again\u001b[0m")
@@ -146,7 +146,7 @@ def main():
                             print("Heres a list of your credentials")
 
                             for credential in display_credentials():
-                                print(f"{credential.platform_name} {credential.pla}")
+                                print(f"Account: {credential.platform_name}")
 
                         else:
                             print("\u001b[31mYou don't seem to have any credentials saved\u001b[0m")
@@ -186,12 +186,12 @@ def main():
                     if choice == "a":
                         if display_credentials():
                             print("\n")
-                            print("\u001b[32;1mHere is a list of all your credentials\u001b[0m")
+                            print("Here is a list of all your credentials")
                             print("\n")
 
                             for credential in display_credentials():
                                 # print("We should be getting something")
-                                print(f"{credential.platform_name} {credential.platform_username}")
+                                print(f"Account: {credential.platform_name}")
 
                         else:
                             print("\u001b[31mYou don't seem to have any credentials saved\u001b[0m")
