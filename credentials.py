@@ -45,3 +45,4 @@ class Credentials:
         for credential in cls.credential_requirements:
             if credential.platfform_name == platform:
                 return credential
+                

@@ -90,14 +90,6 @@ def main():
            
             user_password = input("Enter your password: ")
 
-            # if display_credentials():
-            #     for credential in display_credentials():
-            #         if user_Name == credential.platform_username:
-            #             # return credential
-            #             print("Login successful")
-            #         else:
-            #             print("No account found. Create one or Login using right credentials")
-
             print("No account found with the credentials.Create a new account or login using the right credentials")
 
             break
