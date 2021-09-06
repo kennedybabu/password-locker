@@ -8,15 +8,17 @@ class Credentials:
 
     def __init__(self, platform_name, platform_user_name, platform_user_password):
 
-        self.platfform_name = platform_name
+        self.platform_name = platform_name
         self.platform_user_name = platform_user_name
         self.platform_user_password = platform_user_password
+
 
     def save_credentials(self):
         """
         Method that saves a credential object in the credential_requirements array
         """
         Credentials.credential_requirements.append(self)
+
 
     def delete_credentials(self):
         """
@@ -32,6 +34,7 @@ class Credentials:
         """
         return cls.credential_requirements
 
+
     @classmethod
     def find_credentials(cls, platform):
         """
@@ -43,6 +46,21 @@ class Credentials:
             Credentials that match the platform_name
         """
         for credential in cls.credential_requirements:
-            if credential.platfform_name == platform:
+            if credential.platform_name == platform:
                 return credential
-                
+
+
+    @classmethod
+    def credential_exists(cls, platform):
+        """
+        Function that will check for a credential exists from the credential list
+        Args:
+            Platform: name to search if it exists
+        Returns:
+            Boolean: True or false
+        """
+        for credential in cls.credential_requirements:
+            if credential.platform_name == platform:
+                return True
+
+        return False

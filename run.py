@@ -24,6 +24,7 @@ def create_user_credentials(platform_name, platform_username, platform_password)
     Function that will create a new credential
     """
     new_user_credentials = Credentials(platform_name, platform_username, platform_password)
+    return new_user_credentials
 
 def save_user_credentials(credential):
     """
@@ -56,6 +57,11 @@ def find_credentials(credential):
 
     return Credentials.find_credentials(credential)
 
+def check_existing_credentials(platform):
+    """
+    Function that will check for a credential
+    """
+    return Credentials.credential_exists(platform)
 
 
 @classmethod
@@ -63,8 +69,7 @@ def password_gen(length):
     """
     generate random password
     """
-    letters = string.ascii_lowercase # define the specific string  
-    # define the condition for random.sample() method  
+    letters = string.ascii_lowercase
     result1 = ''.join((random.sample(letters, length)))  
     platform_password = result1
     return platform_password    
@@ -84,16 +89,18 @@ def main():
 
     while True:
         if short_code == "a":
-            print("Enter your credentials")
-            print("_"*3)
-            
-            user_Name = input("Enter your user name: ")
+            print()
            
-            user_password = input("Enter your password: ")
+            platform_search = input("Enter the platform you want to search for: ")
+            if check_existing_credentials(platform_search):
+                search_credential = find_credentials(platform_search)
+                print(search_credential.platform_name)
 
-            print("No account found with the credentials.Create a new account or login using the right credentials")
+            else:
+                print("\u001b[31;1mThe credential was not found, Try Again\u001b[0m")
+                
+                sys.exit()
 
-            break
 
 
         elif short_code == "b":
@@ -114,7 +121,7 @@ def main():
                     save_user(create_user(new_user_first_name, new_user_last_name,new_user_password))
 
                 else:
-                    print("\N{ESC}[31m  Password Doesn't match. Try again\u001b[0m")
+                    print("\N{ESC}[31mPassword Doesn't match. Try again\u001b[0m")
                     break
             elif create_password_option == "b":              
 
@@ -131,7 +138,7 @@ def main():
 
                     save_user(create_user(new_user_first_name, new_user_last_name, new_user_password))
                     print("\n")                  
-                    print(f"Successfully, created {new_user_first_name} account")
+                    print(f"\u001b[32;1mSuccessfully, created {new_user_first_name} account\u001b[0m")
                     user_decision = input("\u001b[34mA. To view Your saved Passwords | B. Exit\u001b[0m: ").lower()
 
                     if user_decision == "a":
@@ -139,11 +146,12 @@ def main():
                             print("Heres a list of your credentials")
 
                             for credential in display_credentials():
-                                print(f"{credential}")
+                                print(f"{credential.platform_name} {credential.pla}")
 
                         else:
                             print("\u001b[31mYou don't seem to have any credentials saved\u001b[0m")
-
+                            print("Exit")
+                            sys.exit()
 
 
                     elif user_decision == "b":
@@ -178,12 +186,12 @@ def main():
                     if choice == "a":
                         if display_credentials():
                             print("\n")
-                            print("Here is a list of all your credentials")
+                            print("\u001b[32;1mHere is a list of all your credentials\u001b[0m")
                             print("\n")
 
                             for credential in display_credentials():
-                                print("We should be getting something")
-                                print(f"{credential}")
+                                # print("We should be getting something")
+                                print(f"{credential.platform_name} {credential.platform_username}")
 
                         else:
                             print("\u001b[31mYou don't seem to have any credentials saved\u001b[0m")

@@ -21,7 +21,7 @@ class TestUser(unittest.TestCase):
         will test that the credential object is initialized as expected
         """
 
-        self.assertEqual(self.new_credentials.platfform_name, "twitter")
+        self.assertEqual(self.new_credentials.platform_name, "twitter")
         self.assertEqual(self.new_credentials.platform_user_name, "cosmic254")
         self.assertEqual(self.new_credentials.platform_user_password, "12345")
 
@@ -74,7 +74,7 @@ class TestUser(unittest.TestCase):
         test_credential.save_credentials()
 
         found_credential = Credentials.find_credentials("pinterest")
-        self.assertEqual(found_credential.platfform_name, test_credential.platfform_name)
+        self.assertEqual(found_credential.platform_name, test_credential.platform_name)
 
 
 
